@@ -1,0 +1,187 @@
+---
+title: "Pengaruh Impor Pakaian Bekas Terhadap PDB Industri Tekstil dan Pakaian Jadi di Indonesia"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Marcellia Kumala Sari"
+date: 2023-01-23
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![](poltekapp.jpg){fig-align="center"}
+
+## Pendahuluan
+
+### Latar belakang
+
+Pada dasarnya setiap manusia memiliki kebutuhan untuk hidup yang tidak terbatas dan beragam. Jika ditinjau dari kepentingannya, yaitu kebutuhan primer, sekunder, dan tersier. Kebutuhan primer merupakan kebutuhan utama atau kebutuhan pokok yang meliputi sandang (pakaian), pangan (makan dan minum), dan papan (tempat tinggal). Pakaian adalah salah satu kebutuhan yang penting bagi manusia untuk menutupi dan melindungi tubuhnya. Selain itu, pakaian juga berfungsi sebagai penunjang gaya hidup manusia agar dapat tampil percaya diri dan menarik. Setiap manusia memiliki gaya hidup mereka masing-masing, namun tidak sedikit juga manusia yang lebih mementingkan kenyamanan dibandingkan penampilan (Hanifah, 2022).
+
+Jepang dan Korea Selatan adalah contoh dari negara yang menjadi trendsetter dalam dunia mode. Hal ini dikarenakan cara berpakaian yang memiliki ciri-ciri yang khas, unik, dan lucu sehingga remaja menyukai gaya tersebut (Muiz et al., 2023) . Tidak hanya menjadi *trendsetter*, Jepang juga menjadi salah satu importir pakaian bekas terbesar bagi Indonesia. Hal tersebut membuat keresahan bagi para *stakeholder* industri mode serta pemerintah akan pertumbuhan dan kestabilan industri tekstil dan pakaian jadi di Indonesia.
+
+### Ruang lingkup
+
+Dalam penelitian ini penulis mengambil objek penelitian bersumber pada Badan Pusat Statistik dan Trademap. Pada penelitian ini terdapat 2 variabel meliputi nilai impor pakaian bekas dan nilai Produk Domestik Bruto (PDB) industri tekstil dan pakaian jadi Indonesia. Data yang digunakan adalah data yang bersifat time series dengan kurun waktu 11 tahun yaitu 2012-2022 serta dengan satuan yang telah diubah kedalam US Dollar dengan tujuan memudahkan penyetaraan mata uang.
+
+### Rumusan masalah
+
+Berdasarkan dengan latar belakang di atas, maka yang menjadi pokok masalah pada penelitian ini sebagai berikut.
+
+1.  Apakah impor pakaian bekas memengaruhi PDB tekstil dan pakaian jadi di Indonesia?
+2.  Apakah dengan adanya larangan impor pakaian bekas akan meningkatkan PDB tekstil dan pakaian jadi di Indonesia?
+
+### Tujuan dan manfaat penelitian
+
+Penelitian ini bertujuan untuk memberikan pengetahuan mengenai pengaruh impor pakaian bekas kepada PDB tekstil dan pakaian jadi. Selain itu, penelitian ini juga diharapkan dapat memperluas wawasan pembaca dalam bidang ekonomi.
+
+Adapun manfaat dari penelitian sebagai berikut.
+
+1\. Manfaat Teoritis
+
+Sebagai bahan untuk meningkatkan pengetahuan di bidang ekonomi terkhusus industri tekstil.
+
+2\. Manfaat Praktis
+
+a\. Bagi Penulis
+
+Mengimplementasikan teori dan ilmu yang telah didapatkan selama dalam perkuliahan ilmu ekonomi serta metodologi penelitian.
+
+b\. Pihak lain
+
+Sebagai dasar pemikiran untuk penelitian selanjutnya, baik peneliti sendiri maupun peneliti-peneliti lainnya. Serta diharapkan bermanfaat bagi pembaca untuk mempelajari hubungan impor dengan PDB pada suatu industri dengan industri tekstil sebagai topik penelitian ini.
+
+### Package
+
+Packages yang digunakan sebagai penunjang *Ordinary Least Square* (OLS) dalam penelitian ini antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library(tidyverse)
+library(readxl)
+```
+
+## Studi pustaka
+
+1.  Impor
+
+Impor merupakan suatu proses transportasi barang atau komoditas dari suatu negara ke negara lain secara legal, umumnya terjadi dalam proses perdagangan. Menurut Undang-undang nomor 17 tahun 2006 pasal 2, barang impor adalah barang yang dimasukkan ke dalam daerah pabean. Impor dapat menurunkan pendapatan nasional pada keseimbangan dan menimbulkan masalah-masalah ekonomi yang akan dihadapi negara (Hodijah & Angelina, 2021). Namun, disisi lain impor juga menguntungkan bagi negara. Impor memungkinkan pengusaha untuk mendapatkan produk dengan harga yang lebih kompetitif dari pasar internasional. Impor juga sangat berguna untuk memastikan ketersediaan kebutuhan negara akan barang dan jasa yang tidak dapat diproduksi secara efisien atau ekonomis di dalam negeri tercukupi.
+
+2.  Produk Domestik Bruto (PDB)
+
+Produk Domestik Bruto dapat diartikan sebagai nilai keseluruhan akan semua barang dan jasa yang diproduksi di dalam wilayah tersebut dalam jangka waktu tertentu (umumnya per tahun). PDB merupakan salah satu metode yag sering digunakan untuk menghitung pendapatan nasional. Berbeda dengan Produk Nasional Bruto, PDB menghitung total produksi dari suatu negara tanpa mempertimbangkan apakah produksi itu dilakukan dengan memakai faktor produksi dalam negeri atau tidak. Rumus umum untuk PDB adalah:
+
+$$
+PDB= konsumsi + investasi + pemerintah + (ekspor-impor)
+$$Dimana konsumsi adalah pengeluaran yang dilakukan oleh rumah tangga, investasi oleh sektor usaha, pemerintah merupakan pengeluaran oleh pemerintah, serta ekspor dan impor melibatkan sektor luar negeri.
+
+## Metode penelitian
+
+### Data
+
+| Tahun | Nilai PDB (Y) | Nilai Impor (X) |
+|:-----:|:-------------:|:---------------:|
+| 2012  |  69.623.839   |     353.000     |
+| 2013  |  74.207.808   |     203.000     |
+| 2014  |  75.366.605   |     93.550      |
+| 2015  |  71.755.769   |     525.120     |
+| 2016  |  71.691.747   |     504.200     |
+| 2017  |  74.431.885   |    1.091.780    |
+| 2018  |  80.930.110   |    1.790.440    |
+| 2019  |  93.343.961   |    6.075.440    |
+
+Penelitian ini menggunakan data sekunder yang berbentuk *time series* 2012-2022, data yang digunakan merupakan data dalam bentuk US Dollar yang telah diolah bersumber dari Badan Pusat Statistika.
+
+```{r}
+setwd('C:/KULIAH/METOPEL/Artikel')
+library('readxl')
+dat<-read_excel('data1.xlsx')
+View(dat)
+reg1<-lm(PDB~import,data=dat)
+dat$m<-resid(reg1)
+plot(dat$import,dat$m,xlab = "import",ylab = "error")
+abline(h=0)
+```
+
+Plot pengaruh error terhadap nilai impor pakaian bekas.
+
+```{r}
+plot(dat$PDB,dat$m,xlab = "PDB",ylab = "error")
+abline(h=0)
+```
+
+Plot pengaruh error terhadap nilai PDB industri tekstil dan pakaian jadi.
+
+### Metode analisis
+
+Metode yang dipilih dalam penelitian ini adalah *Ordinary Least Square* (OLS) dengan 1 variabel independen. Selain itu teknik analisis yang digunakan yaitu kuantitatif deskriptif. Penelitian ini bermaksud untuk mencari hubungan antara impor (X) dengan PDB. Spesifikasi yang dilakukan adalah:
+
+$$
+Y=\beta_0 + \beta_1 X+\mu
+$$Di mana $Y$ adalah produk domestik bruto (PDB) dan $X$ adalah nilai impor.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Pembahasan atas penelitian ini hanya menghubungkan Nilai Impor pakaian bekas dengan PDB industri tekstil dan pakaian jadi dikarenakan penggunaan OLS. Berikut data yang diregresikan.
+
+```{r}
+setwd('C:/KULIAH/METOPEL/Artikel')
+library('readxl')
+dat<-read_excel('data1.xlsx')
+head(dat, n = 11)
+```
+
+### Analisis masalah
+
+Berikut hasil regresi pada data:
+
+```{r}
+reg1<-lm(PDB~import,data=dat)
+summary(reg1)
+```
+
+
+Berikut ini adalah bentuk tabel dari hasil regresi tersebut.
+
+| Variabel           | Coefficient | Std. Error | t-value |   Prob   |
+|:-------------------|:------------|:----------:|:-------:|:--------:|
+| Intercept          | 7.606e+07   | 2.342e+06  | 32.471  | 1.23e-10 |
+| Import             | 2.671e+00   | 1.194e+00  |  2.237  |  0.0521  |
+| R-squared          | 0.3574      |            |         |          |
+| Adjusted R-squared | 0.286       |            |         |          |
+| F-Statistic        | 5.006       |            |         |          |
+| Prob (F-statistic) | 0.05206     |            |         |          |
+
+Hasil dari regresi dimasukkan ke dalam rumus persamaan yang digunakan sehingga menjadi:
+
+$$
+Y=7.606 + 2.672 X
+$$Kegiatan ekspor-impor berpengaruh pada pertumbuhan ekonomi. Impor sangat bergantung pada produk domestik bruto, karena ia adalah salah satu sumber pembiayaan impor. Impor tidak terlalu berpengaruh kepada PDB. Namun, jika impor terlalu tinggi maka PDB akan menurun. Jika melihat pada hasil regresi dapat diasumsikan setiap kenaikan impor 1 maka PDB akan meningkat sebesar 2.672. Hal ini dikarenakan dari hasil regresi tersebut terbukti bahwa impor pakaian bekas dan PDB industri tekstil dan pakaian jadi memiliki hubungan yang positif.
+
+## Kesimpulan
+
+Berdasarkan penelitian yang telah dilakukan, dapat disimpulkan bahwa:
+
+1.  Impor pakaian bekas tidak terlalu mempengaruhi PBD industri tekstil dan pakaian jadi. Impor dan PDB pada penelitian ini memiliki hubungan yang positif.
+2.  Larangan terhadap impor pakaian bekas itu sendiri telah diresmikan sejak tahun 2015 yaitu dalam Peraturan Menteri Perdagangan Nomor 51/M-DAG/PER/7/2015 tentang Larangan Impor Pakaian Bekas. Jika kita lihat kembali pada tabel data nilai impor dan PDB, impor pakaian bekas tetap dilakukan, bahkan terjadi peningkatan drastis pada tahun 2019. Dengan ini terbukti kalau larangan impor pakaian bekas tidak berpengaruh pada impor itu sendiri. Akan tetapi, impor ini tidak terlalu berpengaruh pada PDB, oleh karena itu PDB tetap meningkat didukung oleh faktor-faktor lain.
+3.  Perlu dicatat bahwa data-data diatas mungkin belum merepresentasikan fakta secara lengkap. Besar kemungkinan terjadinya impor pakaian bekas yang menggunakan cara ilegal sehingga nilainya tidak tercatat.
+
+## Referensi
+
+Budiyanti, E. (2023). Dampak Negatif Impor Pakaian Bekas Terhadap Perekonomian. *Pusat Penelitian Badan Keahlian DPR RI*, *17*(6), 11--15.
+
+Dewi, N. M. I. K., Widiati, I. A. P., & Sutama, I. N. (2020). Implikasi Penjualan Pakaian Bekas Impor bagi Konsumen di Kota Denpasar. *Jurnal Interpretasi Hukum*, *1*(1), 216--221. <https://doi.org/10.22225/juinhum.1.1.2222.216-221>
+
+Fatah, A., Sari, D. A. P., Irwanda, I. S., Kolen, L. I., & Agnesia, P. G. D. (2023). Pengaruh Larangan Impor Pakaian Bekas Terhadap Pengusaha Thrift. *Jurnal Economina*, *2*(1), 1321--1328. <https://doi.org/10.55681/economina.v2i1.288>
+
+Hanifah, U. (2022). Pengaruh Ekspor Dan Impor Terhadap Pertumbuhan Ekonomi Di Indonesia. *Transekonomika: Akuntansi, Bisnis Dan Keuangan,* *2*(6), 107--126. <https://doi.org/10.55047/transekonomika.v2i6.275>
+
+Hodijah, S., & Angelina, G. P. (2021). Analisis Pengaruh Ekspor dan Impor Terhadap Pertumbuhan Ekonomi di Indonesia. *Jurnal Manajemen Terapan Dan Keuangan (Mankeu)*, *10*(1), 53--62. <https://doi.org/10.22437/jmk.v10i01.12512>
+
+Muiz, A. N., Fajar, W. L., & Rahayu, R. (2023). Dampak Impor Pakaian Bekas Terhadap Kestabilan Industri Tekstil dan Produk Tekstil di Indonesia. *BUSINESS: Scientific Journal of Business and Entrepreneurship*, *1*(2), 109--117.
+
+Sadya, S. (2023a). Impor Pakaian Bekas Indonesia Mencapai 26,22 Ton pada 2022. *DataIndonesia.Id*. <https://dataindonesia.id/industri-perdagangan/detail/impor-pakaian-bekas-indonesia-mencapai-2622-ton-pada-2022>
+
+Sadya, S. (2023b). Kinerja Industri Tekstil Meningkat 9,34% pada 2022. *DataIndonesia.Id*. <https://dataindonesia.id/industri-perdagangan/detail/kinerja-industri-tekstil-meningkat-934-pada-2022>
